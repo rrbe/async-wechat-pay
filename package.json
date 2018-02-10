@@ -1,0 +1,25 @@
+{
+  "name": "async-wechat-pay",
+  "version": "0.0.1",
+  "description": "wechat payment that return promise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrbe/async-wechat-pay.git"
+  },
+  "keywords": [
+    "async",
+    "wechat",
+    "pay",
+    "payment"
+  ],
+  "author": "gaoxin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrbe/async-wechat-pay/issues"
+  },
+  "homepage": "https://github.com/rrbe/async-wechat-pay#readme"
+}

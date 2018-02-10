@@ -1,0 +1,10 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "no-trailing-spaces": "off",
+    "object-shorthand": "off",
+    "array-bracket-spacing": "off",
+    "valid-jsdoc": "off"
+  }
+}
