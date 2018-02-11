@@ -1,6 +1,6 @@
 {
   "name": "async-wechat-pay",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "wechat payment that return promise",
   "main": "index.js",
   "scripts": {
