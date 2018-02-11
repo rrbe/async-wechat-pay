@@ -38,6 +38,19 @@ class WechatPay {
             return { code: CODE.FAIL, msg: MSG.SIGN_ERROR };
         }
     }
+
+    queryorder(appParams) {
+        const basicParams = {
+            appid: this.addid,
+            mch_id: this.mch_id,
+            nonce_str: util.rand(),
+        }
+        const mergeParams = Object.assign({}, appParams, basicParams);
+        const sign = util.makeSign(this.secretKey, mergeParams);
+        mergeParams.sign = sign;
+
+        return util.makeRequest(Config.QUERY_ORDER, mergeParams);
+    }
 }
 
 module.exports = WechatPay;
