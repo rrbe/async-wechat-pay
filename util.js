@@ -53,7 +53,8 @@ const makeRequest = (url, params, options = {}) => {
             return res.status === 200
                 ? handleResponseData(res.data)
                 : { code: CODE.FAIL, msg: MSG.BAD_REQUEST };
-        });
+        })
+        .catch(err => ({ code: CODE.FAIL, msg: err.message }));
 }
 
 const rand = (num = 24, isDigit = false) => {
