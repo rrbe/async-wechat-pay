@@ -26,6 +26,18 @@ class WechatPay {
 
         return util.makeRequest(Config.UNIFIED_ORDER, mergeParams);
     }
+
+    verifyNotifyResponse(params) {
+        const { sign } = params;
+        delete params.sign;
+
+        const signResult = util.makeSign(this.secretKey, params);
+        if (signResult === sign) {
+            return { code: CODE.SUCEESS, msg: MSG.SUCCESS };
+        } else {
+            return { code: CODE.FAIL, msg: MSG.SIGN_ERROR };
+        }
+    }
 }
 
 module.exports = WechatPay;

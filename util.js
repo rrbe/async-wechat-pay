@@ -58,7 +58,9 @@ const makeRequest = (url, params, options = {}) => {
 
 const rand = (num = 24, isDigit = false) => {
     let ret = '';
-    const seed = isDigit ? '1234567890' : '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const seed = isDigit
+        ? '1234567890'
+        : '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     for (let i = 0; i < num; i++) {
         ret += seed.charAt(Math.floor(Math.random() * seed.length));
@@ -67,17 +69,20 @@ const rand = (num = 24, isDigit = false) => {
     return ret;
 }
 
-const toXML = (jsonData) => {
-    const wrapJson = {
-        xml: jsonData,
-    }
+const toXML = json => {
     const builder = new xml2js.Builder();
-    return builder.buildObject(wrapJson);
+    return builder.buildObject({
+        xml: json,
+    });
 }
 
-const toJSON = (xml) => {
-    var parser = new xml2js.Parser({ trim:true, explicitArray:false, explicitRoot:false });
-	return new Promise((resolve, reject) => {
+const toJSON = xml => {
+    const parser = new xml2js.Parser({
+        trim: true,
+        explicitArray: false,
+        explicitRoot: false
+    });
+    return new Promise((resolve, reject) => {
         parser.parseString(xml, (err, result) => {
             if (err) reject(err);
             resolve(result);
