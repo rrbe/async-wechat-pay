@@ -42,7 +42,7 @@ const makeRequest = (url, params, options = {}) => {
     const baseOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/xml',
+            'Content-Type': 'text/xml',
         },
         data,
     };

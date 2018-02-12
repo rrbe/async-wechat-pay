@@ -22,7 +22,7 @@ class WechatPay {
             nonce_str: util.rand(),
             trade_type: 'APP',
         };
-        const mergeParams = Object.assign({}, appParams, basicParams);
+        const mergeParams = Object.assign({}, basicParams, appParams);
         const sign = util.makeSign(this.secretKey, mergeParams);
         mergeParams.sign = sign;
 
@@ -57,11 +57,11 @@ class WechatPay {
 
     queryorder(appParams) {
         const basicParams = {
-            appid: this.addid,
+            appid: this.appid,
             mch_id: this.mch_id,
             nonce_str: util.rand(),
         }
-        const mergeParams = Object.assign({}, appParams, basicParams);
+        const mergeParams = Object.assign({}, basicParams, appParams);
         const sign = util.makeSign(this.secretKey, mergeParams);
         mergeParams.sign = sign;
 
