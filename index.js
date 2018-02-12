@@ -1,6 +1,8 @@
 const assert = require('power-assert');
+
 const util = require('./util');
 const Config = require('./config');
+const { CODE, MSG } = require('./constant');
 
 class WechatPay {
     constructor(options = {}) {
@@ -26,6 +28,20 @@ class WechatPay {
 
         return util.makeRequest(Config.UNIFIED_ORDER, mergeParams);
     }
+    
+    signPrePayOrder(prePayId) {
+        const params = {
+            appid: this.appid,
+            partnerid: this.mch_id,
+            prepayid: prePayId,
+            package: 'Sign=WXPay',
+            noncestr: util.rand(),
+            timestamp: util.getUnixSeconds(),
+        }
+        const sign = util.makeSign(this.secretKey, params);
+
+        return { code: CODE.SUCCESS, msg: MSG.SUCCESS, data: { sign } }
+    }
 
     verifyNotifyResponse(params) {
         const { sign } = params;
@@ -33,7 +49,7 @@ class WechatPay {
 
         const signResult = util.makeSign(this.secretKey, params);
         if (signResult === sign) {
-            return { code: CODE.SUCEESS, msg: MSG.SUCCESS };
+            return { code: CODE.SUCCESS, msg: MSG.SUCCESS };
         } else {
             return { code: CODE.FAIL, msg: MSG.SIGN_ERROR };
         }

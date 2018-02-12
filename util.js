@@ -28,7 +28,7 @@ const handleResponseData = data => {
     return toJSON(data)
         .then(result => {
             if (result.return_code === 'SUCCESS' && result.result_code === 'SUCCESS') {
-                return { code: CODE.SUCEESS, msg: MSG.SUCCESS, data: result }
+                return { code: CODE.SUCCESS, msg: MSG.SUCCESS, data: result }
             }
             return { code: CODE.FAIL, msg: MSG.REQUEST_FAIL, data: result.return_msg };
         })
@@ -91,10 +91,15 @@ const toJSON = xml => {
     });
 };
 
+const getUnixSeconds = () => {
+    return parseInt(Date.now() / 1000).toString();
+};
+
 module.exports = {
     makeSign,
     rand,
     makeRequest,
     toXML,
     toJSON,
+    getUnixSeconds,
 }

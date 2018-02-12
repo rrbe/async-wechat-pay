@@ -1,5 +1,5 @@
 const CODE = {
-    SUCEESS: '0',
+    SUCCESS: '0',
     FAIL: '-1'
 };
 
