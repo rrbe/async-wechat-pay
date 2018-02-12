@@ -91,15 +91,10 @@ const toJSON = xml => {
     });
 };
 
-const getUnixSeconds = () => {
-    return parseInt(Date.now() / 1000).toString();
-};
-
 module.exports = {
     makeSign,
     rand,
     makeRequest,
     toXML,
     toJSON,
-    getUnixSeconds,
 }

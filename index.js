@@ -29,14 +29,14 @@ class WechatPay {
         return util.makeRequest(Config.UNIFIED_ORDER, mergeParams);
     }
     
-    signPrePayOrder(prePayId) {
+    signPrePayOrder(prepayId, nonceStr, timestamp) {
         const params = {
             appid: this.appid,
             partnerid: this.mch_id,
-            prepayid: prePayId,
+            prepayid: prepayId,
             package: 'Sign=WXPay',
-            noncestr: util.rand(),
-            timestamp: util.getUnixSeconds(),
+            noncestr: nonceStr,
+            timestamp,
         }
         const sign = util.makeSign(this.secretKey, params);
 
