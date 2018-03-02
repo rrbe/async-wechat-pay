@@ -67,6 +67,19 @@ class WechatPay {
 
         return util.makeRequest(Config.QUERY_ORDER, mergeParams);
     }
+
+    // refund(appParams) {
+    //     const basicParams = {
+    //         appid: this.appid,
+    //         mch_id: this.mch_id,
+    //         nonce_str: util.rand(),
+    //     }
+    //     const mergeParams = Object.assign({}, basicParams, appParams);
+    //     const sign = util.makeSign(this.secretKey, mergeParams);
+    //     mergeParams.sign = sign;
+
+    //     return util.makeRequest(Config.REFUND, mergeParams);
+    // }
 }
 
 module.exports = WechatPay;

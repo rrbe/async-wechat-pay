@@ -1,6 +1,6 @@
 const CODE = {
-    SUCCESS: '0',
-    FAIL: '-1'
+    SUCCESS: 'SUCCESS',
+    FAIL: 'FAIL'
 };
 
 const MSG = {
